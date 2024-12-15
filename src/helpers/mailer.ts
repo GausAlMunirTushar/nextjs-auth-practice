@@ -29,7 +29,7 @@ const sendEmail = async ({ email, emailType, userId }: SendEmailParams) => {
 			port: 2525,
 			auth: {
 				user: "6c79830f1fe4c1",
-				pass: "********d0ca",
+				pass: "43af6c04b5d0ca",
 			},
 		});
 
