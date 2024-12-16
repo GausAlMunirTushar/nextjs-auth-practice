@@ -1,8 +1,6 @@
 import { connectDB } from "@/config/database";
 import User from "@/models/user.model";
 import { NextRequest, NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
-import sendEmail from "@/helpers/mailer";
 
 connectDB();
 
@@ -12,7 +10,7 @@ export async function POST(request: NextRequest) {
 		const { token } = reqBody;
 		console.log(token);
 
-		const user = User.findOne({
+		const user = await User.findOne({
 			verifyToken: token,
 			verifyExpire: { $gt: Date.now() },
 		});
