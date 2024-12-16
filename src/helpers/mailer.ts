@@ -13,14 +13,18 @@ const sendEmail = async ({ email, emailType, userId }: SendEmailParams) => {
 		const hashToken = await bcrypt.hash(userId.toString(), 10);
 
 		if (emailType === "VERIFY") {
-			await User.findByIdAndUpdate(userId, {
-				verifyToken: hashToken,
-				verifyExpire: Date.now() + 10 * 60 * 1000,
+			const updatedUser = await User.findByIdAndUpdate(userId, {
+				$set: {
+					verifyToken: hashToken,
+					verifyExpire: Date.now() + 10 * 60 * 1000,
+				},
 			});
 		} else if (emailType === "RESET") {
 			await User.findByIdAndUpdate(userId, {
-				forgotPasswordToken: hashToken,
-				forgotPasswordExpire: Date.now() + 10 * 60 * 1000,
+				$set: {
+					forgotPasswordToken: hashToken,
+					forgotPasswordExpire: Date.now() + 10 * 60 * 1000,
+				},
 			});
 		}
 
