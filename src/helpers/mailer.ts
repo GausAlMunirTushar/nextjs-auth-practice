@@ -43,7 +43,7 @@ const sendEmail = async ({ email, emailType, userId }: SendEmailParams) => {
         <div style="font-family: Arial, sans-serif; line-height: 1.5;">
           <h2 style="color: #333;">Verify Your Email</h2>
           <p>Thank you for signing up! Please verify your email address by clicking the link below:</p>
-          <a href="${process.env.DOMAIN}/verifyEmail?token=${hashToken}" style="color: #4CAF50;">Verify Email</a>
+          <a href="${process.env.DOMAIN}/verify-email?token=${hashToken}" style="color: #4CAF50;">Verify Email</a>
           <p>This link will expire in 10 minutes.</p>
           <p>If you did not request this, please ignore this email.</p>
         </div>
@@ -52,7 +52,7 @@ const sendEmail = async ({ email, emailType, userId }: SendEmailParams) => {
         <div style="font-family: Arial, sans-serif; line-height: 1.5;">
           <h2 style="color: #333;">Reset Your Password</h2>
           <p>We received a request to reset your password. Click the link below to set a new password:</p>
-          <a href="${process.env.DOMAIN}/verifyEmail?token=${hashToken}" style="color: #4CAF50;">Reset Password</a>
+          <a href="${process.env.DOMAIN}/verify-email?token=${hashToken}" style="color: #4CAF50;">Reset Password</a>
           <p>This link will expire in 10 minutes.</p>
           <p>If you did not request this, please ignore this email.</p>
         </div>
